@@ -14,7 +14,7 @@
             }
         },
         "Logo": "128_fill.png",
-        "Owner": "Crews Development",
+        "Owner": "Grant Crews",
         "Anchors": [
             {
                 "ID": "about-button",
@@ -40,22 +40,8 @@
     },
     "Header": {
         "Hero": "hero.png",
-        "Title": "Hello, world!",
-        "SubtitlePrefix": "I engineer ",
-        "SubtitleItems": [
-            "full stack software.",
-            "desktop applications.",
-            "websites.",
-            "databases.",
-            "software solutions.",
-            "graphics.",
-            "video productions.",
-            "collaborative projects.",
-            "strong teamwork.",
-            "professional products.",
-            "lasting relationships.",
-            "delicious coffee."
-        ]
+        "Title": "Hi There!",
+        "Subtitle": "I'm going to be the funniest guy you know on the internet."
     },
     "Attributes": [
         {

@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
+import React, { useState } from 'react';
 import * as Material from '@material-ui/core';
 import Icon from '@material-ui/core/Icon';
 import { useScrollPosition } from '@n8tb1t/use-scroll-position';
-import TextTransition from 'react-text-transition';
 import Data from './Data.json';
 
 function App() {
@@ -28,7 +26,6 @@ function App() {
   */
 
   const [shadowNav, setShadowNav] = useState(false);
-  const [currentThing, setCurrentThing] = useState(0);
   const [formData, setFormData] = useState({});
   const [formError, setFormError] = useState(false);
   const [message, setMessage] = useState(MessageState.Initial);
@@ -111,21 +108,10 @@ function App() {
   ====================
   */
 
-  useScrollPosition(({ _prevPos, currPos }) => {
+  useScrollPosition(({ currPos }) => {
     const isScrolled = currPos.y < 0;
     if (isScrolled !== shadowNav) setShadowNav(isScrolled);
   }, [shadowNav]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (currentThing < Data.Header.SubtitleItems.length - 1) {
-        setCurrentThing(currentThing + 1);
-      } else {
-        setCurrentThing(0);
-      }
-    }, 2000);
-    return (() => clearInterval(interval));
-  });
 
   /*
   ====================
@@ -286,8 +272,8 @@ function App() {
                   key={anchor.Name}
                   id={anchor.ID}
                   className="AnchorButton"
-                  variant={anchor.Variant}
-                  color={anchor.Color}
+                  variant={anchor.Variant as "contained" | "text" | "outlined"}
+                  color={anchor.Color as Material.PropTypes.Color}
                   onClick={() => document
                     .getElementById(anchor.Link)
                     .scrollIntoView()}
@@ -316,11 +302,7 @@ function App() {
             id="subtitle"
             variant="h4"
           >
-            {Data.Header.SubtitlePrefix}
-            <TextTransition
-              text={Data.Header.SubtitleItems[currentThing]}
-              inline
-            />
+            {Data.Header.Subtitle}
           </Material.Typography>
           <div className="HeaderSpacer" />
         </div>
@@ -452,7 +434,8 @@ function App() {
       <footer id="footer">
         <div className="Content GrayText">
           <Material.Typography>
-            {Data.Footer.Copyright.replace("{year}", new Date().getFullYear())}
+            {Data.Footer.Copyright.replace("{year}", 
+              new Date().getFullYear().toString())}
           </Material.Typography>
           <Material.Typography variant="caption" paragraph>
             {Data.Footer.Subtext}
