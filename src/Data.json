@@ -1,6 +1,9 @@
 {
     "Meta": {
         "Theme": {
+            "typography": {
+                "fontFamily": "'Noto Serif', 'Cambria', 'Georgia', 'Times New Roman', 'Times', 'Tahoma', serif"
+            },
             "palette": {
                 "primary": {
                     "light": "#6aebff",

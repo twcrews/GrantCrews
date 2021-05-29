@@ -5,241 +5,14 @@ import { useScrollPosition } from '@n8tb1t/use-scroll-position';
 import Data from './Data.json';
 
 function App() {
-
-  /* 
-  ====================
-    ENUMS
-  ====================
-  */
-
-  const MessageState = Object.freeze({
-    "Initial": 0,
-    "Sending": 1,
-    "Sent": 2,
-    "Error": 3
-  });
-
-  /* 
-  ====================
-    STATE
-  ====================
-  */
-
   const [shadowNav, setShadowNav] = useState(false);
-  const [formData, setFormData] = useState({});
-  const [formError, setFormError] = useState(false);
-  const [message, setMessage] = useState(MessageState.Initial);
-
-  /* 
-  ====================
-    FUNCTIONS
-  ====================
-  */
-
-  const fieldValid = (field) => {
-    var val = formData[field.ID];
-    var pattern = new RegExp(field.Pattern);
-    if (val) {
-      return val.trim().length > 0 && pattern.test(val.trim());
-    }
-  };
-  const formValid = () => {
-    var BreakException = {};
-    try {
-      Data.Contact.Fields.forEach(field => {
-        if (!fieldValid(field)) {
-          throw BreakException;
-        }
-      });
-    } catch (e) {
-      if (e !== BreakException) throw e;
-      return false;
-    }
-    return true;
-  };
-  const submitForm = () => {
-    setMessage(MessageState.Sending);
-    var formUrl = Data.Meta.FormUrl;
-    var formEntries = Data.Contact.Fields.map(field => field.Entry);
-    var formValues = Data.Contact.Fields.map(field => formData[field.ID]);
-    var submitData = new FormData();
-    formEntries.forEach((entry, i) => submitData.append(entry, formValues[i]));
-    fetch(formUrl, {
-      method: "POST",
-      mode: "no-cors",
-      referrer: "strict-origin-when-cross-origin",
-      body: submitData
-    })
-      .then(response => {
-        if (response.ok || response.status === 0) {
-          setMessage(MessageState.Sent);
-        } else {
-          setMessage(MessageState.Error);
-        }
-      })
-      .catch(() => {
-        setMessage(MessageState.Error);
-      });
-  }
-
-  /* 
-  ====================
-    EVENT HANDLERS
-  ====================
-  */
-
-  const handleLink = (url) => { window.open(url, "_blank"); };
-  const handleFieldChange = (event) => {
-    var tmpForm = { ...formData };
-    tmpForm[event.target.id ?? event.target.name] = event.target.value;
-    setFormData(tmpForm);
-  };
-  const handleSendClick = () => {
-    if (!formValid()) {
-      setFormError(true);
-    } else {
-      submitForm();
-    }
-  };
-
-  /* 
-  ====================
-    HOOKS
-  ====================
-  */
+  
+  const handleLink = (url: string) => { window.open(url, "_blank"); };
 
   useScrollPosition(({ currPos }) => {
     const isScrolled = currPos.y < 0;
     if (isScrolled !== shadowNav) setShadowNav(isScrolled);
   }, [shadowNav]);
-
-  /*
-  ====================
-    UI SEGMENTS
-  ====================
-  */
-
-  const contactForm = (
-    <React.Fragment>
-      <div className="ContactForm">
-        {Data.Contact.Fields.map(field =>
-          <div
-            key={field.ID}
-            style={{
-              gridColumnStart: field.GridColumnStart,
-              gridColumnEnd: "span " + field.GridColumnSpan
-            }}
-            className="ContactField"
-          >
-            {
-              field.Component === "TextField" ?
-                <Material.TextField
-                  id={field.ID}
-                  type={field.Type}
-                  label={field.Label}
-                  required={field.Required}
-                  onChange={handleFieldChange}
-                  value={formData[field.ID] ?? ""}
-                  multiline={field.Multiline}
-                  rows={field.Rows}
-                  error={formError && !fieldValid(field)}
-                  helperText={formError && !fieldValid(field) ?
-                    field.HelperText : null}
-                  fullWidth
-                  variant="outlined"
-                /> :
-                field.Component === "Select" ?
-                  <Material.FormControl
-                    id={field.ID}
-                    variant="filled"
-                    fullWidth
-                    required={field.Required}
-                    error={formError && !fieldValid(field)}
-                  >
-                    <Material.InputLabel
-                      id={field.ID + "-label"}
-                    >
-                      {field.Label}
-                    </Material.InputLabel>
-                    <Material.Select
-                      id={field.ID}
-                      name={field.ID}
-                      labelId={field.ID + "-label"}
-                      value={formData[field.ID] ?? ""}
-                      onChange={handleFieldChange}
-                    >
-                      {field.Items.map(item =>
-                        <Material.MenuItem
-                          key={item}
-                          value={item}
-                        >
-                          {item}
-                        </Material.MenuItem>
-                      )}
-                    </Material.Select>
-                    <Material.FormHelperText>
-                      {formError && !fieldValid(field) ?
-                        field.HelperText : null}
-                    </Material.FormHelperText>
-                  </Material.FormControl> : null
-            }
-          </div>
-        )}
-      </div>
-      <div className="ActionButton">
-        <Material.Button
-          fullWidth
-          variant="contained"
-          color="secondary"
-          size="large"
-          onClick={handleSendClick}
-        >
-          {Data.Contact.Button}
-        </Material.Button>
-      </div>
-    </React.Fragment>
-  );
-
-  const infoCard = (
-    <div
-      className="InfoCard"
-      style={{
-        backgroundColor:
-          message === MessageState.Error ?
-            "#fff2cf" : "#ddffdd"
-      }}
-    >
-      {message === MessageState.Error ?
-        <Icon style={{
-          fontSize: "60px",
-          color: "red",
-          marginBottom: "10px"
-        }}>
-          highlight_off
-        </Icon> :
-        <Icon style={{
-          fontSize: "60px",
-          color: "green",
-          marginBottom: "10px"
-        }}>
-          check_circle
-        </Icon>
-      }
-      <span className="GrayText">
-        <Material.Typography>
-          {message === MessageState.Error ?
-            Data.Dialog.SubmitFail.Message :
-            Data.Dialog.SubmitSuccess.Message}
-        </Material.Typography>
-      </span>
-    </div>
-  );
-
-  /* 
-  ====================
-    RENDER
-  ====================
-  */
 
   return (
     <div id="page">
@@ -276,7 +49,7 @@ function App() {
                   color={anchor.Color as Material.PropTypes.Color}
                   onClick={() => document
                     .getElementById(anchor.Link)
-                    .scrollIntoView()}
+                    ?.scrollIntoView()}
                 >
                   {anchor.Name}
                 </Material.Button>
@@ -404,31 +177,6 @@ function App() {
           </div>
         </div>
         <div className="SectionSpacer" />
-
-        {/* Contact form */}
-        <div className="Content" id="contact-section">
-          <Material.Typography
-            variant="h3"
-            paragraph
-            className="SectionHeader"
-          >
-            {Data.Contact.Title}
-          </Material.Typography>
-          <span className="GrayText">
-            <Material.Typography variant="subtitle1">
-              {Data.Contact.Description}
-            </Material.Typography>
-          </span>
-          {message === MessageState.Initial ?
-            contactForm :
-            message === MessageState.Sending ?
-              <Material.CircularProgress
-                size={60}
-                style={{ marginTop: "30px" }} 
-              /> :
-              infoCard}
-
-        </div>
       </div>
 
       <footer id="footer">
