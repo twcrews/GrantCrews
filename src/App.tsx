@@ -15,37 +15,26 @@ function App() {
   }, [shadowNav]);
 
   return (
-    <div id="page">
-      <div id="body-wrap">
+    <div>
+    <div id="top"/>
+      <div style={Data.Meta.Styles.Body}>
 
         {/* Navigation bar */}
-        <div id="top" />
         <Material.AppBar
-          id="nav"
           elevation={shadowNav ? 3 : 0}
           position="sticky"
         >
-          <Material.Toolbar id="nav-bar">
-            <span className="NavItems">
-              <img
-                id="nav-logo"
-                alt="Logo"
-                src={Data.Meta.Logo}
-              />
-              <Material.Typography
-                id="nav-title"
-                variant="h6"
-              >
+          <Material.Toolbar style={Data.Meta.Styles.Nav}>
+            <span style={Data.Meta.Styles.NavItems}>
+              <Material.Typography variant="h6">
                 {Data.Meta.Owner}
               </Material.Typography>
             </span>
-            <span className="NavItems">
+            <span style={Data.Meta.Styles.NavItems}>
               {Data.Meta.Anchors.map(anchor =>
                 <Material.Button
                   key={anchor.Name}
                   id={anchor.ID}
-                  className="AnchorButton"
-                  variant={anchor.Variant as "contained" | "text" | "outlined"}
                   color={anchor.Color as Material.PropTypes.Color}
                   onClick={() => document
                     .getElementById(anchor.Link)
@@ -59,11 +48,13 @@ function App() {
         </Material.AppBar>
 
         {/* Header/hero */}
-        <div id="about-section">
-          <div
-            id="hero"
-            style={{ backgroundImage: "url(" + Data.Header.Hero + ")" }}
-          />
+        <div style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "20px",
+          alignItems: "center"
+        }}>
+          <div style={Data.Meta.Styles.Hero} />
           <Material.Typography
             id="title"
             variant="h1"
@@ -119,64 +110,6 @@ function App() {
             )}
           </div>
         </div>
-        <div className="SectionSpacer" />
-
-        {/* Project portfolio */}
-        <div className="Content" id="portfolio-section">
-          <Material.Typography
-            variant="h3"
-            paragraph
-            className="SectionHeader"
-          >
-            {Data.Portfolio.Title}
-          </Material.Typography>
-          <span className="GrayText">
-            <Material.Typography variant="subtitle1" paragraph>
-              {Data.Portfolio.Description}
-            </Material.Typography>
-          </span>
-          <div className="PortfolioTiles">
-            {Data.Portfolio.Projects.map(project =>
-              project.Enabled ?
-                <div
-                  key={project.Title}
-                  className="PortfolioProject"
-                  style={{
-                    backgroundImage: "url(" + project.Image + ")",
-                    backgroundColor: "#00b9ff",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center"
-                  }}
-                >
-                  <div
-                    className="Darken FullHeight"
-                    onClick={() => project.Enabled ?
-                      handleLink(project.Link) :
-                      null}
-                  >
-                    <div className="ProjectTypography">
-                      <Material.Typography variant="h6">
-                        {project.Title}
-                      </Material.Typography>
-                      <Material.Typography
-                        variant="caption"
-                        style={{ textTransform: "uppercase" }}
-                      >
-                        {project.Year}
-                      </Material.Typography>
-                      <Material.Typography
-                        variant="subtitle2"
-                        style={{ opacity: 0.8 }}
-                      >
-                        {project.Description}
-                      </Material.Typography>
-                    </div>
-                  </div>
-                </div> : null
-            )}
-          </div>
-        </div>
-        <div className="SectionSpacer" />
       </div>
 
       <footer id="footer">
