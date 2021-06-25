@@ -6,7 +6,7 @@ import Data from './Data.json';
 
 function App() {
   const [shadowNav, setShadowNav] = useState(false);
-  
+
   const handleLink = (url: string) => { window.open(url, "_blank"); };
 
   useScrollPosition(({ currPos }) => {
@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div>
-    <div id="top"/>
+      <div id="top" />
       <div style={Data.Meta.Styles.Body}>
 
         {/* Navigation bar */}
@@ -115,7 +115,7 @@ function App() {
       <footer id="footer">
         <div className="Content GrayText">
           <Material.Typography>
-            {Data.Footer.Copyright.replace("{year}", 
+            {Data.Footer.Copyright.replace("{year}",
               new Date().getFullYear().toString())}
           </Material.Typography>
           <Material.Typography variant="caption" paragraph>

@@ -20,7 +20,8 @@
             "Body": {
                 "display": "flex",
                 "flexFlow": "column",
-                "gap": "40px"
+                "gap": "40px",
+                "backgroundColor": "#eee"
             },
             "Nav": {
                 "fontFamily": "Arimo",
@@ -67,56 +68,38 @@
     },
     "Attributes": [
         {
-            "Name": "Software",
-            "Icon": "code",
-            "Description": "I've been honing my development skills for over ten years.",
+            "Name": "Skills",
+            "Icon": "star",
+            "Description": "I have broad talents in the fields of communication, marketing, and theatre.",
             "Sections": [
                 {
-                    "Title": "Back end languages",
+                    "Title": "Communication",
                     "Content": [
-                        "C#",
-                        "Python",
-                        "PHP",
-                        "VB.NET",
-                        "SQL"
+                        "Mass communications",
+                        "Extemporaneous speech",
+                        "Public relations",
+                        "Community management",
+                        "Motivational speaking"
                     ]
                 },
                 {
-                    "Title": "Front end languages",
+                    "Title": "Marketing",
                     "Content": [
-                        "Javascript",
-                        "JSX",
-                        "HTML",
-                        "CSS",
-                        "X(A)ML"
-                    ]
-                }
-            ]
-        },
-        {
-            "Name": "Design",
-            "Icon": "palette",
-            "Description": "I take pride in my attention to detail and artistic aptitudes.",
-            "Sections": [
-                {
-                    "Title": "My specialties",
-                    "Content": [
-                        "Graphics",
-                        "Video effects",
-                        "Web/UX design",
-                        "Photo editing"
+                        "Brand promotion",
+                        "Sloganeering",
+                        "Design",
+                        "Content creation"
                     ]
                 },
                 {
-                    "Title": "Favorite tools",
+                    "Title": "Theatre",
                     "Content": [
-                        "Photoshop",
-                        "GIMP",
-                        "Illustrator",
-                        "Premiere Pro",
-                        "After Effects",
-                        "InDesign",
-                        "Adobe XD"
+                        "Method acting",
+                        "Set design",
+                        "Shop/wood work",
+                        "Sound and lighting",
+                        "Script writing",
+                        "Directing"
                     ]
                 }
             ]
@@ -143,6 +126,34 @@
                         "ACTS Community Church",
                         "Bloom Counseling",
                         "Quail Springs Baptist Church"
+                    ]
+                }
+            ]
+        },
+        {
+            "Name": "Education",
+            "Icon": "school",
+            "Description": "I take pride in my attention to detail and artistic aptitudes.",
+            "Sections": [
+                {
+                    "Title": "My specialties",
+                    "Content": [
+                        "Graphics",
+                        "Video effects",
+                        "Web/UX design",
+                        "Photo editing"
+                    ]
+                },
+                {
+                    "Title": "Favorite tools",
+                    "Content": [
+                        "Photoshop",
+                        "GIMP",
+                        "Illustrator",
+                        "Premiere Pro",
+                        "After Effects",
+                        "InDesign",
+                        "Adobe XD"
                     ]
                 }
             ]
