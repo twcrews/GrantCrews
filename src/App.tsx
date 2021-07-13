@@ -15,9 +15,9 @@ function App() {
   }, [shadowNav]);
 
   return (
-    <div>
+    <div style={Data.Meta.Styles.Global}>
       <div id="top" />
-      <div style={Data.Meta.Styles.Body}>
+      <div style={Data.Meta.Styles.Body as React.CSSProperties}>
 
         {/* Navigation bar */}
         <Material.AppBar
@@ -26,7 +26,10 @@ function App() {
         >
           <Material.Toolbar style={Data.Meta.Styles.Nav}>
             <span style={Data.Meta.Styles.NavItems}>
-              <Material.Typography variant="h6">
+              <Material.Typography 
+                variant="h6"
+                style={Data.Meta.Styles.Headings}
+              >
                 {Data.Meta.Owner}
               </Material.Typography>
             </span>
@@ -36,9 +39,12 @@ function App() {
                   key={anchor.Name}
                   id={anchor.ID}
                   color={anchor.Color as Material.PropTypes.Color}
+                  variant="outlined"
+                  disableElevation
                   onClick={() => document
                     .getElementById(anchor.Link)
                     ?.scrollIntoView()}
+                  style={Data.Meta.Styles.Headings}
                 >
                   {anchor.Name}
                 </Material.Button>
@@ -48,38 +54,32 @@ function App() {
         </Material.AppBar>
 
         {/* Header/hero */}
-        <div style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "20px",
-          alignItems: "center"
-        }}>
+        <div style={Data.Meta.Styles.Header as React.CSSProperties}>
           <div style={Data.Meta.Styles.Hero} />
           <Material.Typography
             id="title"
             variant="h1"
             paragraph
+            style={Data.Meta.Styles.Headings}
           >
             {Data.Header.Title}
           </Material.Typography>
           <Material.Typography
             id="subtitle"
             variant="h4"
+            style={Data.Meta.Styles.Headings}
           >
             {Data.Header.Subtitle}
           </Material.Typography>
-          <div className="HeaderSpacer" />
+          <div/>
         </div>
 
         {/* Attributes */}
-        <div id="attributes-section" className="Content">
-          <div className="Attributes">
+        <div id="attributes-section">
+          <div>
             {Data.Attributes.map(attr =>
-              <div
-                key={attr.Name}
-                className="AttributeTile"
-              >
-                <span className="BigIcon">
+              <div key={attr.Name}>
+                <span>
                   <Icon fontSize="inherit" color="primary">
                     {attr.Icon}
                   </Icon>
@@ -87,7 +87,7 @@ function App() {
                     {attr.Name}
                   </Material.Typography>
                 </span>
-                <div className="Multiline GrayText">
+                <div>
                   <Material.Typography color="inherit">
                     {attr.Description}
                   </Material.Typography>
@@ -112,8 +112,8 @@ function App() {
         </div>
       </div>
 
-      <footer id="footer">
-        <div className="Content GrayText">
+      <footer style={Data.Meta.Styles.Footer as React.CSSProperties}>
+        <div>
           <Material.Typography>
             {Data.Footer.Copyright.replace("{year}",
               new Date().getFullYear().toString())}
@@ -123,10 +123,11 @@ function App() {
           </Material.Typography>
           <Material.Button
             variant="contained"
-            color="primary"
+            color="secondary"
             size="small"
             disableElevation
             onClick={() => handleLink(Data.Footer.PromotionLink)}
+            style={Data.Meta.Styles.Headings}
           >
             {Data.Footer.PromotionText}
           </Material.Button>

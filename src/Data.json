@@ -12,16 +12,21 @@
                     "contrastText": "#fff"
                 },
                 "secondary": {
-                    "main": "#d5ff57"
+                    "main": "#eee"
                 }
             }
         },
         "Styles": {
+            "Global": {
+                "backgroundColor": "#eee",
+                "cursor": "default"
+            },
             "Body": {
                 "display": "flex",
-                "flexFlow": "column",
+                "flexDirection": "column",
                 "gap": "40px",
-                "backgroundColor": "#eee"
+                "backgroundColor": "#eee",
+                "cursor": "default"
             },
             "Nav": {
                 "fontFamily": "Arimo",
@@ -42,8 +47,23 @@
                 "backgroundPosition": "center",
                 "backgroundSize": "contain",
                 "boxShadow": "0 2px 4px 0 rgba(0, 0, 0, 0.5)"
+            },
+            "Header": {
+                "display": "flex",
+                "flexDirection": "column",
+                "gap": "20px",
+                "alignItems": "center",
+                "textAlign": "center"
+            },
+            "Headings": {
+                "fontFamily": "'Arimo'"
+            },
+            "Footer": {
+                "backgroundColor": "#8822ff",
+                "color": "#fff",
+                "textAlign": "center",
+                "padding": "20px 0"
             }
-            
         },
         "Owner": "Grant Crews",
         "Anchors": [
@@ -51,13 +71,13 @@
                 "ID": "about-button",
                 "Name": "About",
                 "Link": "top",
-                "Color": "inherit"
+                "Color": "secondary"
             },
             {
                 "ID": "portfolio-button",
                 "Name": "Portfolio",
                 "Link": "portfolio-section",
-                "Color": "inherit"
+                "Color": "secondary"
             }
         ],
         "FormUrl": "https://docs.google.com/forms/u/1/d/e/1FAIpQLSd-IRmw1oZIAw2ljJcLWmZ57hcWfmPtxcN7qMgHx59cdqdaxQ/formResponse"
@@ -112,20 +132,8 @@
                 {
                     "Title": "Who I've worked for",
                     "Content": [
-                        "NASA",
-                        "SWOSU",
-                        "Paycom Software",
-                        "Darlington Schools"
-                    ]
-                },
-                {
-                    "Title": "Freelance contracts",
-                    "Content": [
-                        "Growing Wellness, LLC",
-                        "Kirch's Korner",
-                        "ACTS Community Church",
-                        "Bloom Counseling",
-                        "Quail Springs Baptist Church"
+                        "The Walt Disney Company",
+                        "Southwestern Oklahoma State University"
                     ]
                 }
             ]
@@ -136,24 +144,9 @@
             "Description": "I take pride in my attention to detail and artistic aptitudes.",
             "Sections": [
                 {
-                    "Title": "My specialties",
+                    "Title": "Bachelor of Arts",
                     "Content": [
-                        "Graphics",
-                        "Video effects",
-                        "Web/UX design",
-                        "Photo editing"
-                    ]
-                },
-                {
-                    "Title": "Favorite tools",
-                    "Content": [
-                        "Photoshop",
-                        "GIMP",
-                        "Illustrator",
-                        "Premiere Pro",
-                        "After Effects",
-                        "InDesign",
-                        "Adobe XD"
+                        "Southwestern Oklahoma State University"
                     ]
                 }
             ]
