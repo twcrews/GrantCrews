@@ -19,14 +19,10 @@
         "Styles": {
             "Global": {
                 "backgroundColor": "#eee",
-                "cursor": "default"
-            },
-            "Body": {
+                "cursor": "default",
                 "display": "flex",
                 "flexDirection": "column",
-                "gap": "40px",
-                "backgroundColor": "#eee",
-                "cursor": "default"
+                "gap": "40px"
             },
             "Nav": {
                 "fontFamily": "Arimo",
@@ -39,52 +35,52 @@
                 "alignItems": "center",
                 "gap": "10px"
             },
-            "Hero": { 
+            "Hero": {
                 "backgroundImage": "url(hero.png)",
                 "width": "300px",
                 "height": "300px",
+                "border": "solid 5px #eee",
                 "borderRadius": "20px",
                 "backgroundPosition": "center",
-                "backgroundSize": "contain",
-                "boxShadow": "0 2px 4px 0 rgba(0, 0, 0, 0.5)"
+                "backgroundSize": "contain"
             },
             "Header": {
                 "display": "flex",
                 "flexDirection": "column",
+                "padding": "40px 0",
                 "gap": "20px",
+                "alignItems": "center",
+                "textAlign": "center",
+                "backgroundColor": "#8822ff",
+                "color": "#eee"
+            },
+            "Heading": {
+                "fontFamily": "'Arimo'"
+            },
+            "IconHeading": {
+                "display": "flex",
+                "gap": "10px",
+                "alignItems": "center"
+            },
+            "Attribute": {
+                "display": "flex",
+                "flexDirection": "column",
+                "gap": "10px",
                 "alignItems": "center",
                 "textAlign": "center"
             },
-            "Headings": {
-                "fontFamily": "'Arimo'"
-            },
             "Footer": {
                 "backgroundColor": "#8822ff",
-                "color": "#fff",
+                "color": "#eee",
                 "textAlign": "center",
                 "padding": "20px 0"
             }
         },
-        "Owner": "Grant Crews",
-        "Anchors": [
-            {
-                "ID": "about-button",
-                "Name": "About",
-                "Link": "top",
-                "Color": "secondary"
-            },
-            {
-                "ID": "portfolio-button",
-                "Name": "Portfolio",
-                "Link": "portfolio-section",
-                "Color": "secondary"
-            }
-        ],
-        "FormUrl": "https://docs.google.com/forms/u/1/d/e/1FAIpQLSd-IRmw1oZIAw2ljJcLWmZ57hcWfmPtxcN7qMgHx59cdqdaxQ/formResponse"
+        "Owner": "Grant Crews"
     },
     "Header": {
         "Title": "Hi There!",
-        "Subtitle": "I'm going to be the funniest guy you know on the internet."
+        "Subtitle": "I'm Grant. I'm going to be the funniest guy you know on the internet."
     },
     "Attributes": [
         {
